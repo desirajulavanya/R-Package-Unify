@@ -1,0 +1,172 @@
+---
+
+## output: github_document
+
+# unfiy
+
+<!-- badges: start -->
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+`unfiy` provides tidyverse-friendly tools for auditing, diagnosing, and documenting panel datasets after import.
+
+The package is designed for empirical researchers who work with repeated observations over units and time, such as district-year, county-year, country-month, household-quarter, or firm-year panels.
+
+`unfiy` focuses on one stage of the research workflow:
+
+> after importing data, but before estimation.
+
+It helps researchers identify common panel-data problems, including missing id-time cells, duplicate id-time cells, and incomplete panel structure. The package is intentionally transparent: it does not silently impute, aggregate, drop, or alter substantive observations.
+
+## Installation
+
+You can install the development version of `unfiy` from GitHub with:
+
+```r
+# install.packages("devtools")
+devtools::install_github("YOUR-GITHUB-USERNAME/unfiy")
+```
+
+## Why `unfiy`?
+
+Applied researchers often combine data from many sources before running regressions, event studies, local projections, or spatial models. File import tools help bring data into R, but researchers still need to verify whether the resulting dataset has a usable panel structure.
+
+`unfiy` helps answer questions like:
+
+* Is my panel balanced?
+* Which units are missing time periods?
+* Which id-time cells are duplicated?
+* Did completing the panel add artificial rows?
+* Can I document these changes transparently?
+
+## Basic example
+
+```r
+library(unfiy)
+library(tibble)
+
+df <- tibble(
+  district = c("A", "A", "B"),
+  year = c(2020, 2021, 2020),
+  wage = c(100, 110, 90)
+)
+
+audit_panel(df, id = district, time = year)
+```
+
+This returns a panel audit:
+
+```r
+#> Panel audit
+#>
+#> Data: df
+#> Unit variable: district
+#> Time variable: year
+#>
+#> Units: 2
+#> Time periods: 2
+#> Observed rows: 3
+#> Observed id-time cells: 3
+#> Expected id-time cells: 4
+#> Missing id-time cells: 1
+#> Duplicate id-time cells: 0
+#> Balanced panel: No
+```
+
+## Inspect missing panel cells
+
+```r
+panel_gaps(df, id = district, time = year)
+```
+
+```r
+#> # A tibble: 1 × 2
+#>   district  year
+#>   <chr>    <dbl>
+#> 1 B         2021
+```
+
+## Summarize gaps by unit
+
+```r
+gap_summary(df, id = district, time = year)
+```
+
+```r
+#> # A tibble: 1 × 2
+#>   district unfiy_missing_periods
+#>   <chr>                    <int>
+#> 1 B                            1
+```
+
+## Detect duplicate id-time cells
+
+```r
+df_dup <- tibble(
+  district = c("A", "A", "B", "B", "B"),
+  year = c(2020, 2021, 2020, 2021, 2021),
+  wage = c(100, 110, 90, 95, 96)
+)
+
+panel_duplicates(df_dup, id = district, time = year)
+```
+
+```r
+#> # A tibble: 1 × 3
+#>   district  year     n
+#>   <chr>    <dbl> <int>
+#> 1 B         2021     2
+```
+
+## Complete a panel transparently
+
+`complete_panel()` expands the observed id-time grid but does not impute substantive variables. Newly created rows are flagged.
+
+```r
+completed <- complete_panel(df, id = district, time = year)
+
+completed
+```
+
+The added row is explicitly marked:
+
+```r
+#> # A tibble: 4 × 6
+#>   district  year  wage unfiy_original_row unfiy_completed_cell unfiy_audit_action
+#>   <chr>    <dbl> <dbl> <lgl>              <lgl>                <chr>
+#> 1 A         2020   100 TRUE               FALSE                original_observation
+#> 2 A         2021   110 TRUE               FALSE                original_observation
+#> 3 B         2020    90 TRUE               FALSE                original_observation
+#> 4 B         2021    NA FALSE              TRUE                 added_missing_id_time_cell_no_imputation
+```
+
+## Design principles
+
+`unfiy` follows three principles:
+
+1. **Do not reinvent basic data operations.**
+   The package builds on tidyverse tools and focuses on panel-data diagnostics and audit trails.
+
+2. **Do not silently change the data.**
+   Functions do not automatically impute, aggregate, or drop observations. When rows are added by `complete_panel()`, they are explicitly flagged.
+
+3. **Stay tidyverse-friendly.**
+   Functions accept data frames or tibbles, support unquoted column names, work naturally with pipes, and return clean objects that can be inspected or summarized.
+
+## Current functions
+
+* `audit_panel()` audits panel structure.
+* `audit_summary()` converts an audit object to a one-row tibble.
+* `panel_gaps()` returns missing id-time cells.
+* `gap_summary()` summarizes missing periods by unit.
+* `panel_duplicates()` returns duplicate id-time cells.
+* `duplicate_summary()` summarizes duplicates by unit.
+* `flag_panel_issues()` adds row-level duplicate flags.
+* `complete_panel()` completes the id-time grid with an audit trail.
+* `missing_cells()` extracts missing cells from an audit object.
+* `duplicate_cells()` extracts duplicate cells from an audit object.
+
+## Development status
+
+`unfiy` is under active development. The current version focuses on transparent panel-data auditing and completion. Future versions may add event-study support checks, local-projection horizon tools, and exposure-variable diagnostics for applied research workflows.
