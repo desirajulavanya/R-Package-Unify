@@ -1,0 +1,119 @@
+---
+title: "Getting Started with unifyr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with unifyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+`unifyr` provides tools for auditing, validating, and preparing panel datasets before statistical analysis.
+
+Panel datasets often contain duplicate unit-time observations, missing time periods, irregular gaps, and imbalance. These issues can affect fixed effects models, difference-in-differences designs, event studies, and other panel-data methods.
+
+The goal of `unifyr` is to help users identify these issues before estimation.
+
+# Load the package
+
+```{r}
+library(unifyr)
+```
+
+# Example panel dataset
+
+`unifyr` includes a small example dataset called `example_panel`.
+
+```{r}
+data(example_panel)
+
+example_panel
+```
+
+The dataset intentionally includes:
+
+- a duplicate unit-time observation
+- missing unit-time cells
+- an unbalanced panel structure
+
+This makes it useful for demonstrating panel-data diagnostics.
+
+# Audit the panel
+
+The main function is `audit_panel()`.
+
+```{r}
+audit_panel(example_panel, id = id, time = year)
+```
+
+This gives a quick overview of the panel structure, including whether the panel is balanced and whether there are missing or duplicate unit-time cells.
+
+# Find duplicate observations
+
+Duplicate unit-time observations are a common problem in panel datasets.
+
+```{r}
+duplicate_summary(example_panel, id = id, time = year)
+```
+
+# Summarize gaps
+
+`gap_summary()` identifies missing time periods by panel unit.
+
+```{r}
+gap_summary(example_panel, id = id, time = year)
+```
+
+# Flag row-level issues
+
+`flag_panel_issues()` adds diagnostic flags to the data.
+
+```{r}
+flag_panel_issues(example_panel, id = id, time = year)
+```
+
+# Complete a panel grid
+
+`complete_panel()` creates a complete unit-time grid. It does not impute missing outcome values.
+
+Because `complete_panel()` requires unique unit-time cells, we first remove duplicate id-time observations from the example dataset.
+
+```{r}
+example_panel_unique <- example_panel |>
+  dplyr::distinct(id, year, .keep_all = TRUE)
+
+complete_panel(example_panel_unique, id = id, time = year)
+```
+
+# Typical workflow
+
+A typical `unifyr` workflow is:
+
+```{r, eval = FALSE}
+library(unifyr)
+
+audit_panel(my_data, id = unit_id, time = year)
+
+duplicate_summary(my_data, id = unit_id, time = year)
+
+gap_summary(my_data, id = unit_id, time = year)
+
+clean_data <- my_data |>
+  dplyr::distinct(unit_id, year, .keep_all = TRUE)
+
+complete_panel(clean_data, id = unit_id, time = year)
+```
+
+# Summary
+
+`unifyr` is designed to provide a transparent and reproducible workflow for panel-data quality assurance.
+
+Use it before fitting panel models, difference-in-differences designs, event studies, or other longitudinal-data analyses.
