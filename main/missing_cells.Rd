@@ -14,7 +14,7 @@ A tibble containing missing id-time combinations.
 }
 \description{
 \code{missing_cells()} extracts the missing id-time combinations from an
-\code{unfiy_panel_audit} object.
+\code{unifyr_panel_audit} object.
 }
 \examples{
 df <- tibble::tibble(

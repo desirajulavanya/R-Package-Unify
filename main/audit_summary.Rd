@@ -13,7 +13,7 @@ audit_summary(x)
 A one-row tibble with panel audit statistics.
 }
 \description{
-\code{audit_summary()} converts an \code{unfiy_panel_audit} object into a one-row
+\code{audit_summary()} converts an \code{unifyr_panel_audit} object into a one-row
 tibble. This is useful for storing audit results, comparing datasets, and
 building reproducible data reports.
 }

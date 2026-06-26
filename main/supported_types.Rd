@@ -11,7 +11,7 @@ A character vector of supported file extensions.
 }
 \description{
 \code{supported_types()} returns the file extensions currently supported by
-\code{unfiy}.
+\code{unifyr}.
 }
 \examples{
 supported_types()

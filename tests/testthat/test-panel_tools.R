@@ -7,7 +7,7 @@ test_that("audit_panel identifies balanced panels", {
 
   audit <- audit_panel(df, id = district, time = year)
 
-  expect_s3_class(audit, "unfiy_panel_audit")
+  expect_s3_class(audit, "unifyr_panel_audit")
   expect_equal(audit$n_units, 2)
   expect_equal(audit$n_periods, 2)
   expect_equal(audit$expected_cells, 4)
@@ -68,13 +68,13 @@ test_that("flag_panel_issues adds duplicate flags without removing rows", {
   flagged <- flag_panel_issues(df, id = district, time = year)
 
   expect_equal(nrow(flagged), nrow(df))
-  expect_true("unfiy_row_id" %in% names(flagged))
-  expect_true("unfiy_id_time_n" %in% names(flagged))
-  expect_true("unfiy_duplicate_cell" %in% names(flagged))
+  expect_true("unifyr_row_id" %in% names(flagged))
+  expect_true("unifyr_id_time_n" %in% names(flagged))
+  expect_true("unifyr_duplicate_cell" %in% names(flagged))
 
-  expect_equal(sum(flagged$unfiy_duplicate_cell), 2)
-  expect_equal(attr(flagged, "unfiy_id"), "district")
-  expect_equal(attr(flagged, "unfiy_time"), "year")
+  expect_equal(sum(flagged$unifyr_duplicate_cell), 2)
+  expect_equal(attr(flagged, "unifyr_id"), "district")
+  expect_equal(attr(flagged, "unifyr_time"), "year")
 })
 
 
@@ -88,14 +88,14 @@ test_that("complete_panel adds missing id-time cells with an audit trail", {
   completed <- complete_panel(df, id = district, time = year)
 
   expect_equal(nrow(completed), 4)
-  expect_true("unfiy_original_row" %in% names(completed))
-  expect_true("unfiy_completed_cell" %in% names(completed))
-  expect_true("unfiy_audit_action" %in% names(completed))
+  expect_true("unifyr_original_row" %in% names(completed))
+  expect_true("unifyr_completed_cell" %in% names(completed))
+  expect_true("unifyr_audit_action" %in% names(completed))
 
-  expect_equal(sum(completed$unfiy_completed_cell), 1)
-  expect_equal(attr(completed, "unfiy_completed_cells"), 1)
+  expect_equal(sum(completed$unifyr_completed_cell), 1)
+  expect_equal(attr(completed, "unifyr_completed_cells"), 1)
 
-  added <- completed[completed$unfiy_completed_cell, ]
+  added <- completed[completed$unifyr_completed_cell, ]
 
   expect_equal(added$district, "B")
   expect_equal(added$year, 2021)

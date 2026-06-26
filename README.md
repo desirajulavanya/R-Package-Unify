@@ -72,7 +72,7 @@ duplicate_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 1 × 3
-    ##      id unfiy_duplicate_cells unfiy_duplicate_extra_rows
+    ##      id unifyr_duplicate_cells unifyr_duplicate_extra_rows
     ##   <dbl>                 <int>                      <int>
     ## 1     1                     1                          1
 
@@ -83,7 +83,7 @@ gap_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 2 × 2
-    ##      id unfiy_missing_periods
+    ##      id unifyr_missing_periods
     ##   <dbl>                 <int>
     ## 1     1                     2
     ## 2     2                     2
@@ -95,7 +95,7 @@ flag_panel_issues(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 9 × 7
-    ##      id  year outcome treatment unfiy_row_id unfiy_id_time_n
+    ##      id  year outcome treatment unifyr_row_id unifyr_id_time_n
     ##   <dbl> <dbl>   <dbl>     <dbl>        <int>           <int>
     ## 1     1  2020      10         0            1               1
     ## 2     1  2021      12         1            2               2
@@ -106,7 +106,7 @@ flag_panel_issues(example_panel, id = id, time = year)
     ## 7     3  2021      31         0            7               1
     ## 8     3  2022      32         1            8               1
     ## 9     3  2023      33         1            9               1
-    ## # ℹ 1 more variable: unfiy_duplicate_cell <lgl>
+    ## # ℹ 1 more variable: unifyr_duplicate_cell <lgl>
 
 ## Complete the panel grid
 
@@ -124,7 +124,7 @@ complete_panel(example_panel_unique, id = id, time = year)
 ```
 
     ## # A tibble: 12 × 7
-    ##       id  year outcome treatment unfiy_original_row unfiy_completed_cell
+    ##       id  year outcome treatment unifyr_original_row unifyr_completed_cell
     ##    <dbl> <dbl>   <dbl>     <dbl> <lgl>              <lgl>               
     ##  1     1  2020      10         0 TRUE               FALSE               
     ##  2     1  2021      12         1 TRUE               FALSE               
@@ -138,7 +138,7 @@ complete_panel(example_panel_unique, id = id, time = year)
     ## 10     3  2021      31         0 TRUE               FALSE               
     ## 11     3  2022      32         1 TRUE               FALSE               
     ## 12     3  2023      33         1 TRUE               FALSE               
-    ## # ℹ 1 more variable: unfiy_audit_action <chr>
+    ## # ℹ 1 more variable: unifyr_audit_action <chr>
 
 ## Main functions
 

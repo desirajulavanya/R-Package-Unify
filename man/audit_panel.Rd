@@ -16,7 +16,7 @@ firm, district, county, or country.}
 month, quarter, or date.}
 }
 \value{
-An object of class \code{unfiy_panel_audit}. The object is a list containing panel
+An object of class \code{unifyr_panel_audit}. The object is a list containing panel
 metadata, balance information, counts of missing and duplicate unit-time
 cells, and data frames containing the missing and duplicate cells.
 }

@@ -25,7 +25,7 @@
 #' @export
 
 missing_cells <- function(x) {
-  if (!inherits(x, "unfiy_panel_audit")) {
+  if (!inherits(x, "unifyr_panel_audit")) {
     stop("`x` must be an object created by `audit_panel()`.", call. = FALSE)
   }
 
@@ -64,7 +64,7 @@ missing_cells <- function(x) {
 
 
 duplicate_cells <- function(x) {
-  if (!inherits(x, "unfiy_panel_audit")) {
+  if (!inherits(x, "unifyr_panel_audit")) {
     stop("`x` must be an object created by `audit_panel()`.", call. = FALSE)
   }
 

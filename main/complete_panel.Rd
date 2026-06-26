@@ -15,7 +15,7 @@ complete_panel(data, id, time)
 }
 \value{
 A tibble with completed id-time cells and audit columns:
-\code{unfiy_original_row}, \code{unfiy_completed_cell}, and \code{unfiy_audit_action}.
+\code{unifyr_original_row}, \code{unifyr_completed_cell}, and \code{unifyr_audit_action}.
 }
 \description{
 \code{complete_panel()} expands a panel dataset so that every observed unit has

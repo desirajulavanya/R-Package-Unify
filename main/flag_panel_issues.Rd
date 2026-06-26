@@ -15,7 +15,7 @@ flag_panel_issues(data, id, time)
 }
 \value{
 A tibble with additional audit columns:
-\code{unfiy_row_id}, \code{unfiy_id_time_n}, and \code{unfiy_duplicate_cell}.
+\code{unifyr_row_id}, \code{unifyr_id_time_n}, and \code{unifyr_duplicate_cell}.
 }
 \description{
 \code{flag_panel_issues()} adds transparent row-level audit flags to a panel

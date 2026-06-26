@@ -4,9 +4,9 @@
 \name{unifyr-package}
 \alias{unifyr}
 \alias{unifyr-package}
-\title{unfiy: Post-import tools for analysis-ready panel data}
+\title{unifyr: Post-import tools for analysis-ready panel data}
 \description{
-\code{unfiy} provides tidyverse-friendly tools for auditing, diagnosing, and
+\code{unifyr} provides tidyverse-friendly tools for auditing, diagnosing, and
 documenting panel datasets after import. The package focuses on transparent
 panel structure checks, gap detection, duplicate identification, and
 reproducible audit trails for empirical research workflows.
@@ -14,7 +14,7 @@ reproducible audit trails for empirical research workflows.
 \details{
 The package is designed to help researchers identify common panel-data
 problems before estimation, including missing id-time cells, duplicate
-id-time cells, and incomplete panel structure. Functions in \code{unfiy} do not
+id-time cells, and incomplete panel structure. Functions in \code{unifyr} do not
 silently impute, aggregate, or drop observations.
 }
 \seealso{

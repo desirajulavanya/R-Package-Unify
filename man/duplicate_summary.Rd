@@ -18,8 +18,8 @@ A tibble with one row per panel unit that has duplicate cells. The output
 includes:
 
 \describe{
-\item{\code{unfiy_duplicate_cells}}{Number of duplicated unit-time cells for the unit.}
-\item{\code{unfiy_duplicate_extra_rows}}{Number of extra rows caused by duplicates.}
+\item{\code{unifyr_duplicate_cells}}{Number of duplicated unit-time cells for the unit.}
+\item{\code{unifyr_duplicate_extra_rows}}{Number of extra rows caused by duplicates.}
 }
 
 If no duplicates are present, the function returns all units with zero
@@ -29,8 +29,8 @@ A tibble with one row per panel unit that has duplicate cells. The output
 includes:
 
 \describe{
-\item{\code{unfiy_duplicate_cells}}{Number of duplicated unit-time cells for the unit.}
-\item{\code{unfiy_duplicate_extra_rows}}{Number of extra rows caused by duplicates.}
+\item{\code{unifyr_duplicate_cells}}{Number of duplicated unit-time cells for the unit.}
+\item{\code{unifyr_duplicate_extra_rows}}{Number of extra rows caused by duplicates.}
 }
 
 If no duplicates are present, the function returns all units with zero

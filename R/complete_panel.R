@@ -26,11 +26,11 @@
 #' original columns plus the following audit columns:
 #'
 #' \describe{
-#'   \item{`unfiy_original_row`}{Logical indicator for rows present in the
+#'   \item{`unifyr_original_row`}{Logical indicator for rows present in the
 #'   original data.}
-#'   \item{`unfiy_completed_cell`}{Logical indicator for rows created by
+#'   \item{`unifyr_completed_cell`}{Logical indicator for rows created by
 #'   `complete_panel()`.}
-#'   \item{`unfiy_audit_action`}{Character label describing whether a row was
+#'   \item{`unifyr_audit_action`}{Character label describing whether a row was
 #'   original or added during panel completion.}
 #' }
 #'
@@ -83,7 +83,7 @@ complete_panel <- function(data, id, time) {
   original <- data |>
     tibble::as_tibble() |>
     dplyr::mutate(
-      unfiy_original_row = TRUE
+      unifyr_original_row = TRUE
     )
 
   completed <- original |>
@@ -92,24 +92,24 @@ complete_panel <- function(data, id, time) {
       !!time_quo
     ) |>
     dplyr::mutate(
-      unfiy_original_row = dplyr::coalesce(.data$unfiy_original_row, FALSE),
-      unfiy_completed_cell = !.data$unfiy_original_row,
-      unfiy_audit_action = dplyr::if_else(
-        .data$unfiy_completed_cell,
+      unifyr_original_row = dplyr::coalesce(.data$unifyr_original_row, FALSE),
+      unifyr_completed_cell = !.data$unifyr_original_row,
+      unifyr_audit_action = dplyr::if_else(
+        .data$unifyr_completed_cell,
         "added_missing_id_time_cell_no_imputation",
         "original_observation"
       )
     )
 
-  attr(completed, "unfiy_id") <- id_name
-  attr(completed, "unfiy_time") <- time_name
-  attr(completed, "unfiy_completed_cells") <- sum(completed$unfiy_completed_cell)
-  attr(completed, "unfiy_audit_note") <- paste0(
+  attr(completed, "unifyr_id") <- id_name
+  attr(completed, "unifyr_time") <- time_name
+  attr(completed, "unifyr_completed_cells") <- sum(completed$unifyr_completed_cell)
+  attr(completed, "unifyr_audit_note") <- paste0(
     "`complete_panel()` completed the id-time grid using id = ",
     id_name,
     " and time = ",
     time_name,
-    ". Newly created rows are flagged with `unfiy_completed_cell = TRUE`. ",
+    ". Newly created rows are flagged with `unifyr_completed_cell = TRUE`. ",
     "No substantive variables were imputed."
   )
 

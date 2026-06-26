@@ -14,7 +14,7 @@ A tibble containing duplicate id-time combinations and counts.
 }
 \description{
 \code{duplicate_cells()} extracts duplicate id-time combinations from an
-\code{unfiy_panel_audit} object.
+\code{unifyr_panel_audit} object.
 }
 \examples{
 df <- tibble::tibble(

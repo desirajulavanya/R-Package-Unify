@@ -20,11 +20,11 @@ A tibble containing the completed panel grid. The returned data include the
 original columns plus the following audit columns:
 
 \describe{
-\item{\code{unfiy_original_row}}{Logical indicator for rows present in the
+\item{\code{unifyr_original_row}}{Logical indicator for rows present in the
 original data.}
-\item{\code{unfiy_completed_cell}}{Logical indicator for rows created by
+\item{\code{unifyr_completed_cell}}{Logical indicator for rows created by
 \code{complete_panel()}.}
-\item{\code{unfiy_audit_action}}{Character label describing whether a row was
+\item{\code{unifyr_audit_action}}{Character label describing whether a row was
 original or added during panel completion.}
 }
 

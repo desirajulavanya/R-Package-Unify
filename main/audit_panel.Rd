@@ -14,7 +14,7 @@ audit_panel(data, id, time)
 \item{time}{Unquoted column name identifying the time period.}
 }
 \value{
-An object of class \code{unfiy_panel_audit}.
+An object of class \code{unifyr_panel_audit}.
 }
 \description{
 \code{audit_panel()} checks the basic structure of a panel dataset. It reports

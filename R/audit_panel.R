@@ -23,7 +23,7 @@
 #'   month, quarter, or date.
 #'
 #' @return
-#' An object of class `unfiy_panel_audit`. The object is a list containing panel
+#' An object of class `unifyr_panel_audit`. The object is a list containing panel
 #' metadata, balance information, counts of missing and duplicate unit-time
 #' cells, and data frames containing the missing and duplicate cells.
 #'
@@ -105,13 +105,13 @@ audit_panel <- function(data, id, time) {
     duplicate_data = duplicate_cells
   )
 
-  class(out) <- "unfiy_panel_audit"
+  class(out) <- "unifyr_panel_audit"
 
   out
 }
 
 #' @export
-print.unfiy_panel_audit <- function(x, ...) {
+print.unifyr_panel_audit <- function(x, ...) {
   cat("Panel audit\n")
   cat("\n")
   cat("Data: ", x$data_name, "\n", sep = "")

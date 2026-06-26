@@ -64,8 +64,8 @@ panel_duplicates <- function(data, id, time) {
 #' includes:
 #'
 #' \describe{
-#'   \item{`unfiy_duplicate_cells`}{Number of duplicated unit-time cells for the unit.}
-#'   \item{`unfiy_duplicate_extra_rows`}{Number of extra rows caused by duplicates.}
+#'   \item{`unifyr_duplicate_cells`}{Number of duplicated unit-time cells for the unit.}
+#'   \item{`unifyr_duplicate_extra_rows`}{Number of extra rows caused by duplicates.}
 #' }
 #'
 #' If no duplicates are present, the function returns all units with zero
@@ -103,8 +103,8 @@ panel_duplicates <- function(data, id, time) {
 #' includes:
 #'
 #' \describe{
-#'   \item{`unfiy_duplicate_cells`}{Number of duplicated unit-time cells for the unit.}
-#'   \item{`unfiy_duplicate_extra_rows`}{Number of extra rows caused by duplicates.}
+#'   \item{`unifyr_duplicate_cells`}{Number of duplicated unit-time cells for the unit.}
+#'   \item{`unifyr_duplicate_extra_rows`}{Number of extra rows caused by duplicates.}
 #' }
 #'
 #' If no duplicates are present, the function returns all units with zero
@@ -137,23 +137,23 @@ duplicate_summary <- function(data, id, time) {
       data |>
         dplyr::distinct(!!id_quo) |>
         dplyr::mutate(
-          unfiy_duplicate_cells = 0L,
-          unfiy_duplicate_extra_rows = 0L
+          unifyr_duplicate_cells = 0L,
+          unifyr_duplicate_extra_rows = 0L
         ) |>
         dplyr::arrange(!!id_quo)
     )
   }
 
   duplicates |>
-    dplyr::mutate(unfiy_extra_rows = .data$n - 1L) |>
+    dplyr::mutate(unifyr_extra_rows = .data$n - 1L) |>
     dplyr::group_by(!!id_quo) |>
     dplyr::summarise(
-      unfiy_duplicate_cells = dplyr::n(),
-      unfiy_duplicate_extra_rows = sum(.data$unfiy_extra_rows),
+      unifyr_duplicate_cells = dplyr::n(),
+      unifyr_duplicate_extra_rows = sum(.data$unifyr_extra_rows),
       .groups = "drop"
     ) |>
     dplyr::arrange(
-      dplyr::desc(.data$unfiy_duplicate_cells),
+      dplyr::desc(.data$unifyr_duplicate_cells),
       !!id_quo
     )
 }
