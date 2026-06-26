@@ -1,4 +1,36 @@
-url: ~
+url: https://desirajulavanya.github.io/R-Package-Unify/
+
 template:
   bootstrap: 5
 
+home:
+  title: "unifyr: Panel Data Auditing Tools"
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [github]
+
+reference:
+  - title: "Panel audits"
+    contents:
+      - audit_panel
+      - audit_summary
+      - missing_cells
+      - duplicate_cells
+
+  - title: "Panel diagnostics"
+    contents:
+      - panel_gaps
+      - gap_summary
+      - panel_duplicates
+      - duplicate_summary
+      - flag_panel_issues
+
+  - title: "Panel preparation"
+    contents:
+      - complete_panel
+
+  - title: "Example data"
+    contents:
+      - example_panel
