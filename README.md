@@ -28,35 +28,31 @@ estimation.
 ``` r
 library(unifyr)
 
-panel_data <- data.frame(
-  id = c(1, 1, 1, 2, 2, 3, 3, 3, 3),
-  year = c(2020, 2021, 2021, 2020, 2022, 2020, 2021, 2022, 2023),
-  outcome = c(10, 12, 13, 20, 25, 30, 31, 32, 33)
-)
+data(example_panel)
 
-panel_data
+example_panel
 ```
 
-    ##   id year outcome
-    ## 1  1 2020      10
-    ## 2  1 2021      12
-    ## 3  1 2021      13
-    ## 4  2 2020      20
-    ## 5  2 2022      25
-    ## 6  3 2020      30
-    ## 7  3 2021      31
-    ## 8  3 2022      32
-    ## 9  3 2023      33
+    ##   id year outcome treatment
+    ## 1  1 2020      10         0
+    ## 2  1 2021      12         1
+    ## 3  1 2021      13         1
+    ## 4  2 2020      20         0
+    ## 5  2 2022      25         1
+    ## 6  3 2020      30         0
+    ## 7  3 2021      31         0
+    ## 8  3 2022      32         1
+    ## 9  3 2023      33         1
 
 ## Audit a panel dataset
 
 ``` r
-audit_panel(panel_data, id = id, time = year)
+audit_panel(example_panel, id = id, time = year)
 ```
 
     ## Panel audit
     ## 
-    ## Data: panel_data
+    ## Data: example_panel
     ## Unit variable: id
     ## Time variable: year
     ## 
@@ -72,7 +68,7 @@ audit_panel(panel_data, id = id, time = year)
 ## Find duplicate unit-time observations
 
 ``` r
-duplicate_summary(panel_data, id = id, time = year)
+duplicate_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 1 × 3
@@ -83,7 +79,7 @@ duplicate_summary(panel_data, id = id, time = year)
 ## Summarize panel gaps
 
 ``` r
-gap_summary(panel_data, id = id, time = year)
+gap_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 2 × 2
@@ -95,21 +91,22 @@ gap_summary(panel_data, id = id, time = year)
 ## Flag row-level panel issues
 
 ``` r
-flag_panel_issues(panel_data, id = id, time = year)
+flag_panel_issues(example_panel, id = id, time = year)
 ```
 
-    ## # A tibble: 9 × 6
-    ##      id  year outcome unfiy_row_id unfiy_id_time_n unfiy_duplicate_cell
-    ##   <dbl> <dbl>   <dbl>        <int>           <int> <lgl>               
-    ## 1     1  2020      10            1               1 FALSE               
-    ## 2     1  2021      12            2               2 TRUE                
-    ## 3     1  2021      13            3               2 TRUE                
-    ## 4     2  2020      20            4               1 FALSE               
-    ## 5     2  2022      25            5               1 FALSE               
-    ## 6     3  2020      30            6               1 FALSE               
-    ## 7     3  2021      31            7               1 FALSE               
-    ## 8     3  2022      32            8               1 FALSE               
-    ## 9     3  2023      33            9               1 FALSE
+    ## # A tibble: 9 × 7
+    ##      id  year outcome treatment unfiy_row_id unfiy_id_time_n
+    ##   <dbl> <dbl>   <dbl>     <dbl>        <int>           <int>
+    ## 1     1  2020      10         0            1               1
+    ## 2     1  2021      12         1            2               2
+    ## 3     1  2021      13         1            3               2
+    ## 4     2  2020      20         0            4               1
+    ## 5     2  2022      25         1            5               1
+    ## 6     3  2020      30         0            6               1
+    ## 7     3  2021      31         0            7               1
+    ## 8     3  2022      32         1            8               1
+    ## 9     3  2023      33         1            9               1
+    ## # ℹ 1 more variable: unfiy_duplicate_cell <lgl>
 
 ## Complete the panel grid
 
@@ -120,27 +117,27 @@ Because `complete_panel()` requires unique id-time cells, we first
 create a version of the example data without duplicates.
 
 ``` r
-panel_data_unique <- panel_data |>
+example_panel_unique <- example_panel |>
   dplyr::distinct(id, year, .keep_all = TRUE)
 
-complete_panel(panel_data_unique, id = id, time = year)
+complete_panel(example_panel_unique, id = id, time = year)
 ```
 
-    ## # A tibble: 12 × 6
-    ##       id  year outcome unfiy_original_row unfiy_completed_cell
-    ##    <dbl> <dbl>   <dbl> <lgl>              <lgl>               
-    ##  1     1  2020      10 TRUE               FALSE               
-    ##  2     1  2021      12 TRUE               FALSE               
-    ##  3     1  2022      NA FALSE              TRUE                
-    ##  4     1  2023      NA FALSE              TRUE                
-    ##  5     2  2020      20 TRUE               FALSE               
-    ##  6     2  2021      NA FALSE              TRUE                
-    ##  7     2  2022      25 TRUE               FALSE               
-    ##  8     2  2023      NA FALSE              TRUE                
-    ##  9     3  2020      30 TRUE               FALSE               
-    ## 10     3  2021      31 TRUE               FALSE               
-    ## 11     3  2022      32 TRUE               FALSE               
-    ## 12     3  2023      33 TRUE               FALSE               
+    ## # A tibble: 12 × 7
+    ##       id  year outcome treatment unfiy_original_row unfiy_completed_cell
+    ##    <dbl> <dbl>   <dbl>     <dbl> <lgl>              <lgl>               
+    ##  1     1  2020      10         0 TRUE               FALSE               
+    ##  2     1  2021      12         1 TRUE               FALSE               
+    ##  3     1  2022      NA        NA FALSE              TRUE                
+    ##  4     1  2023      NA        NA FALSE              TRUE                
+    ##  5     2  2020      20         0 TRUE               FALSE               
+    ##  6     2  2021      NA        NA FALSE              TRUE                
+    ##  7     2  2022      25         1 TRUE               FALSE               
+    ##  8     2  2023      NA        NA FALSE              TRUE                
+    ##  9     3  2020      30         0 TRUE               FALSE               
+    ## 10     3  2021      31         0 TRUE               FALSE               
+    ## 11     3  2022      32         1 TRUE               FALSE               
+    ## 12     3  2023      33         1 TRUE               FALSE               
     ## # ℹ 1 more variable: unfiy_audit_action <chr>
 
 ## Main functions

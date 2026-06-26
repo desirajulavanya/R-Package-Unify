@@ -26,37 +26,33 @@ Panel datasets often contain missing unit-time cells, duplicate observations, ir
 ```{r}
 library(unifyr)
 
-panel_data <- data.frame(
-  id = c(1, 1, 1, 2, 2, 3, 3, 3, 3),
-  year = c(2020, 2021, 2021, 2020, 2022, 2020, 2021, 2022, 2023),
-  outcome = c(10, 12, 13, 20, 25, 30, 31, 32, 33)
-)
+data(example_panel)
 
-panel_data
+example_panel
 ```
 
 ## Audit a panel dataset
 
 ```{r}
-audit_panel(panel_data, id = id, time = year)
+audit_panel(example_panel, id = id, time = year)
 ```
 
 ## Find duplicate unit-time observations
 
 ```{r}
-duplicate_summary(panel_data, id = id, time = year)
+duplicate_summary(example_panel, id = id, time = year)
 ```
 
 ## Summarize panel gaps
 
 ```{r}
-gap_summary(panel_data, id = id, time = year)
+gap_summary(example_panel, id = id, time = year)
 ```
 
 ## Flag row-level panel issues
 
 ```{r}
-flag_panel_issues(panel_data, id = id, time = year)
+flag_panel_issues(example_panel, id = id, time = year)
 ```
 
 ## Complete the panel grid
@@ -66,10 +62,10 @@ flag_panel_issues(panel_data, id = id, time = year)
 Because `complete_panel()` requires unique id-time cells, we first create a version of the example data without duplicates.
 
 ```{r}
-panel_data_unique <- panel_data |>
+example_panel_unique <- example_panel |>
   dplyr::distinct(id, year, .keep_all = TRUE)
 
-complete_panel(panel_data_unique, id = id, time = year)
+complete_panel(example_panel_unique, id = id, time = year)
 ```
 
 ## Main functions
