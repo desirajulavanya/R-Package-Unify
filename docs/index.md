@@ -1,0 +1,180 @@
+# unifyr
+
+`unifyr` provides tools for auditing, validating, and preparing panel
+datasets before statistical analysis.
+
+## Installation
+
+You can install the development version of `unifyr` from GitHub:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("desirajulavanya/R-Package-Unify")
+```
+
+## Why unifyr?
+
+Panel datasets often contain missing unit-time cells, duplicate
+observations, irregular time gaps, and imbalance. These issues can
+affect fixed effects models, difference-in-differences designs, event
+studies, and other panel-data methods.
+
+`unifyr` helps researchers identify and document these problems before
+estimation.
+
+## Basic example
+
+``` r
+
+library(unifyr)
+
+data(example_panel)
+
+example_panel
+```
+
+``` R
+##   id year outcome treatment
+## 1  1 2020      10         0
+## 2  1 2021      12         1
+## 3  1 2021      13         1
+## 4  2 2020      20         0
+## 5  2 2022      25         1
+## 6  3 2020      30         0
+## 7  3 2021      31         0
+## 8  3 2022      32         1
+## 9  3 2023      33         1
+```
+
+## Audit a panel dataset
+
+``` r
+
+audit_panel(example_panel, id = id, time = year)
+```
+
+``` R
+## Panel audit
+## 
+## Data: example_panel
+## Unit variable: id
+## Time variable: year
+## 
+## Units: 3
+## Time periods: 4
+## Observed rows: 9
+## Observed id-time cells: 8
+## Expected id-time cells: 12
+## Missing id-time cells: 4
+## Duplicate id-time cells: 1
+## Balanced panel: No
+```
+
+## Find duplicate unit-time observations
+
+``` r
+
+duplicate_summary(example_panel, id = id, time = year)
+```
+
+``` R
+## # A tibble: 1 × 3
+##      id unifyr_duplicate_cells unifyr_duplicate_extra_rows
+##   <dbl>                  <int>                       <int>
+## 1     1                      1                           1
+```
+
+## Summarize panel gaps
+
+``` r
+
+gap_summary(example_panel, id = id, time = year)
+```
+
+``` R
+## # A tibble: 2 × 2
+##      id unifyr_missing_periods
+##   <dbl>                  <int>
+## 1     1                      2
+## 2     2                      2
+```
+
+## Flag row-level panel issues
+
+``` r
+
+flag_panel_issues(example_panel, id = id, time = year)
+```
+
+``` R
+## # A tibble: 9 × 7
+##      id  year outcome treatment unifyr_row_id unifyr_id_time_n
+##   <dbl> <dbl>   <dbl>     <dbl>         <int>            <int>
+## 1     1  2020      10         0             1                1
+## 2     1  2021      12         1             2                2
+## 3     1  2021      13         1             3                2
+## 4     2  2020      20         0             4                1
+## 5     2  2022      25         1             5                1
+## 6     3  2020      30         0             6                1
+## 7     3  2021      31         0             7                1
+## 8     3  2022      32         1             8                1
+## 9     3  2023      33         1             9                1
+## # ℹ 1 more variable: unifyr_duplicate_cell <lgl>
+```
+
+## Complete the panel grid
+
+[`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+creates a full unit-time grid while preserving observed values. It does
+not impute missing outcomes.
+
+Because
+[`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+requires unique id-time cells, we first create a version of the example
+data without duplicates.
+
+``` r
+
+example_panel_unique <- example_panel |>
+  dplyr::distinct(id, year, .keep_all = TRUE)
+
+complete_panel(example_panel_unique, id = id, time = year)
+```
+
+``` R
+## # A tibble: 12 × 7
+##       id  year outcome treatment unifyr_original_row unifyr_completed_cell
+##    <dbl> <dbl>   <dbl>     <dbl> <lgl>               <lgl>                
+##  1     1  2020      10         0 TRUE                FALSE                
+##  2     1  2021      12         1 TRUE                FALSE                
+##  3     1  2022      NA        NA FALSE               TRUE                 
+##  4     1  2023      NA        NA FALSE               TRUE                 
+##  5     2  2020      20         0 TRUE                FALSE                
+##  6     2  2021      NA        NA FALSE               TRUE                 
+##  7     2  2022      25         1 TRUE                FALSE                
+##  8     2  2023      NA        NA FALSE               TRUE                 
+##  9     3  2020      30         0 TRUE                FALSE                
+## 10     3  2021      31         0 TRUE                FALSE                
+## 11     3  2022      32         1 TRUE                FALSE                
+## 12     3  2023      33         1 TRUE                FALSE                
+## # ℹ 1 more variable: unifyr_audit_action <chr>
+```
+
+## Main functions
+
+- [`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md)
+  gives a full panel diagnostic summary.
+- [`duplicate_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_summary.md)
+  finds duplicate unit-time observations.
+- [`gap_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/gap_summary.md)
+  summarizes missing time periods by unit.
+- [`flag_panel_issues()`](https://desirajulavanya.github.io/R-Package-Unify/reference/flag_panel_issues.md)
+  flags row-level panel problems.
+- [`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+  creates a complete panel grid without imputing observed variables.
+
+## Package goal
+
+The goal of `unifyr` is to provide a transparent and reproducible
+workflow for panel-data quality assurance before statistical modeling.
