@@ -41,7 +41,7 @@
 #' @export
 
 audit_summary <- function(x) {
-  if (!inherits(x, "unifyr_panel_audit")) {
+  if (!inherits(x, "panelbuild_panel_audit")) {
     stop("`x` must be an object created by `audit_panel()`.", call. = FALSE)
   }
 

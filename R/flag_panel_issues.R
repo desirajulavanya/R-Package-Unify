@@ -23,9 +23,9 @@
 #' A tibble containing the original data plus row-level audit columns:
 #'
 #' \describe{
-#'   \item{`unifyr_row_id`}{Integer row identifier based on the original row order.}
-#'   \item{`unifyr_id_time_n`}{Number of rows with the same unit-time combination.}
-#'   \item{`unifyr_duplicate_cell`}{Logical indicator for rows that belong to a
+#'   \item{`panelbuild_row_id`}{Integer row identifier based on the original row order.}
+#'   \item{`panelbuild_id_time_n`}{Number of rows with the same unit-time combination.}
+#'   \item{`panelbuild_duplicate_cell`}{Logical indicator for rows that belong to a
 #'   duplicate unit-time cell.}
 #' }
 #'
@@ -62,17 +62,17 @@ flag_panel_issues <- function(data, id, time) {
 
   flagged <- data |>
     tibble::as_tibble() |>
-    dplyr::mutate(unifyr_row_id = dplyr::row_number()) |>
+    dplyr::mutate(panelbuild_row_id = dplyr::row_number()) |>
     dplyr::group_by(!!id_quo, !!time_quo) |>
     dplyr::mutate(
-      unifyr_id_time_n = dplyr::n(),
-      unifyr_duplicate_cell = .data$unifyr_id_time_n > 1
+      panelbuild_id_time_n = dplyr::n(),
+      panelbuild_duplicate_cell = .data$panelbuild_id_time_n > 1
     ) |>
     dplyr::ungroup()
 
-  attr(flagged, "unifyr_id") <- id_name
-  attr(flagged, "unifyr_time") <- time_name
-  attr(flagged, "unifyr_audit_note") <- paste0(
+  attr(flagged, "panelbuild_id") <- id_name
+  attr(flagged, "panelbuild_time") <- time_name
+  attr(flagged, "panelbuild_audit_note") <- paste0(
     "Rows were flagged by `flag_panel_issues()` using id = ",
     id_name,
     " and time = ",

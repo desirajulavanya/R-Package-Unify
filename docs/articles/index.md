@@ -3,4 +3,4 @@
 ### All vignettes
 
 - [Getting Started with
-  unifyr](https://desirajulavanya.github.io/R-Package-Unify/articles/getting-started.md):
+  panelbuild](https://desirajulavanya.github.io/panelbuild/articles/getting-started.md):

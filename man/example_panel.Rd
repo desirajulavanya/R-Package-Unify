@@ -21,7 +21,7 @@ A small example panel dataset for demonstrating panel-data auditing.
 }
 \details{
 The dataset intentionally includes one duplicate unit-time observation
-and missing unit-time cells so that users can test \code{unifyr} diagnostics.
+and missing unit-time cells so that users can test \code{panelbuild} diagnostics.
 }
 \examples{
 data(example_panel)

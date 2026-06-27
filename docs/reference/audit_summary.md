@@ -1,7 +1,7 @@
 # Summarize a panel audit
 
 `audit_summary()` converts an audit object created by
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md)
 into a one-row tibble of panel diagnostics.
 
 ## Usage
@@ -15,7 +15,7 @@ audit_summary(x)
 - x:
 
   An object created by
-  [`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+  [`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 
 ## Value
 
@@ -78,9 +78,9 @@ panel is balanced.
 
 ## See also
 
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md),
-[`missing_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/missing_cells.md),
-[`duplicate_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_cells.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md),
+[`missing_cells()`](https://desirajulavanya.github.io/panelbuild/reference/missing_cells.md),
+[`duplicate_cells()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_cells.md)
 
 ## Examples
 

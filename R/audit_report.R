@@ -22,11 +22,11 @@
 #'
 #' @export
 audit_report <- function(x) {
-  if (!inherits(x, "unifyr_panel_audit")) {
+  if (!inherits(x, "panelbuild_panel_audit")) {
     stop("`x` must be an object created by `audit_panel()`.", call. = FALSE)
   }
 
-  cat("unifyr Panel Audit Report\n")
+  cat("panelbuild Panel Audit Report\n")
   cat("==========================\n\n")
 
   cat("Dataset\n")

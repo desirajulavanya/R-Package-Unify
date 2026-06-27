@@ -1,10 +1,10 @@
-url: https://desirajulavanya.github.io/R-Package-Unify/
+url: https://desirajulavanya.github.io/panelbuild/
 
 template:
   bootstrap: 5
 
 home:
-  title: "unifyr: Panel Data Auditing Tools"
+  title: "panelbuild: Panel Data Auditing Tools"
 
 navbar:
   structure:

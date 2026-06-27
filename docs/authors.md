@@ -7,17 +7,17 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/desirajulavanya/R-Package-Unify/blob/HEAD/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/desirajulavanya/panelbuild/blob/HEAD/DESCRIPTION)
 
-Desiraju L (2026). *unifyr: Post-Import Panel Data Auditing and
+Desiraju L (2026). *panelbuild: Post-Import Panel Data Auditing and
 Preparation Tools*. R package version 0.1.0,
-https://github.com/desirajulavanya/R-Package-Unify,
-<https://desirajulavanya.github.io/R-Package-Unify/>.
+https://github.com/desirajulavanya/panelbuild,
+<https://desirajulavanya.github.io/panelbuild/>.
 
     @Manual{,
-      title = {unifyr: Post-Import Panel Data Auditing and Preparation Tools},
+      title = {panelbuild: Post-Import Panel Data Auditing and Preparation Tools},
       author = {Lavanya Desiraju},
       year = {2026},
-      note = {R package version 0.1.0, https://github.com/desirajulavanya/R-Package-Unify},
-      url = {https://desirajulavanya.github.io/R-Package-Unify/},
+      note = {R package version 0.1.0, https://github.com/desirajulavanya/panelbuild},
+      url = {https://desirajulavanya.github.io/panelbuild/},
     }

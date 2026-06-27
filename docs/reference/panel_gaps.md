@@ -37,15 +37,15 @@ unit-time cell.
 
 This function is a data-frame interface to the missing-cell information
 produced by
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 It does not modify, complete, or impute the input data.
 
 ## See also
 
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md),
-[`missing_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/missing_cells.md),
-[`gap_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/gap_summary.md),
-[`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md),
+[`missing_cells()`](https://desirajulavanya.github.io/panelbuild/reference/missing_cells.md),
+[`gap_summary()`](https://desirajulavanya.github.io/panelbuild/reference/gap_summary.md),
+[`complete_panel()`](https://desirajulavanya.github.io/panelbuild/reference/complete_panel.md)
 
 ## Examples
 

@@ -30,10 +30,10 @@ audit_panel(data, id, time)
 
 ## Value
 
-An object of class `unifyr_panel_audit`. The object is a list containing
-panel metadata, balance information, counts of missing and duplicate
-unit-time cells, and data frames containing the missing and duplicate
-cells.
+An object of class `panelbuild_panel_audit`. The object is a list
+containing panel metadata, balance information, counts of missing and
+duplicate unit-time cells, and data frames containing the missing and
+duplicate cells.
 
 ## Details
 
@@ -45,20 +45,20 @@ appear more than once.
 
 `audit_panel()` does not modify the input data. It returns an audit
 object that can be summarized with
-[`audit_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_summary.md)
+[`audit_summary()`](https://desirajulavanya.github.io/panelbuild/reference/audit_summary.md)
 and inspected with accessor functions such as
-[`missing_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/missing_cells.md)
+[`missing_cells()`](https://desirajulavanya.github.io/panelbuild/reference/missing_cells.md)
 and
-[`duplicate_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_cells.md).
+[`duplicate_cells()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_cells.md).
 
 ## See also
 
-[`audit_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_summary.md),
-[`missing_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/missing_cells.md),
-[`duplicate_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_cells.md),
-[`duplicate_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_summary.md),
-[`gap_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/gap_summary.md),
-[`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+[`audit_summary()`](https://desirajulavanya.github.io/panelbuild/reference/audit_summary.md),
+[`missing_cells()`](https://desirajulavanya.github.io/panelbuild/reference/missing_cells.md),
+[`duplicate_cells()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_cells.md),
+[`duplicate_summary()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_summary.md),
+[`gap_summary()`](https://desirajulavanya.github.io/panelbuild/reference/gap_summary.md),
+[`complete_panel()`](https://desirajulavanya.github.io/panelbuild/reference/complete_panel.md)
 
 ## Examples
 

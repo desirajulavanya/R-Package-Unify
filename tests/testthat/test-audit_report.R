@@ -3,10 +3,10 @@ test_that("audit_report prints a report and returns audit invisibly", {
 
   expect_output(
     out <- audit_report(audit),
-    "unifyr Panel Audit Report"
+    "panelbuild Panel Audit Report"
   )
 
-  expect_s3_class(out, "unifyr_panel_audit")
+  expect_s3_class(out, "panelbuild_panel_audit")
 })
 
 test_that("audit_report requires an audit object", {

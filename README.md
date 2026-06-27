@@ -1,37 +1,37 @@
 
-# unifyr
+# panelbuild
 
-`unifyr` provides tools for auditing, validating, and preparing panel
+`panelbuild` provides tools for auditing, validating, and preparing panel
 datasets before statistical analysis.
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/desirajulavanya/R-Package-Unify/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/desirajulavanya/R-Package-Unify/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/desirajulavanya/panelbuild/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/desirajulavanya/panelbuild/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Installation
 
-You can install the development version of `unifyr` from GitHub:
+You can install the development version of `panelbuild` from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("desirajulavanya/R-Package-Unify")
+remotes::install_github("desirajulavanya/panelbuild")
 ```
 
-## Why unifyr?
+## Why panelbuild?
 
 Panel datasets often contain missing unit-time cells, duplicate
 observations, irregular time gaps, and imbalance. These issues can
 affect fixed effects models, difference-in-differences designs, event
 studies, and other panel-data methods.
 
-`unifyr` helps researchers identify and document these problems before
+`panelbuild` helps researchers identify and document these problems before
 estimation.
 
 ## Basic example
 
 ``` r
-library(unifyr)
+library(panelbuild)
 
 data(example_panel)
 
@@ -77,7 +77,7 @@ duplicate_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 1 × 3
-    ##      id unifyr_duplicate_cells unifyr_duplicate_extra_rows
+    ##      id panelbuild_duplicate_cells panelbuild_duplicate_extra_rows
     ##   <dbl>                  <int>                       <int>
     ## 1     1                      1                           1
 
@@ -88,7 +88,7 @@ gap_summary(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 2 × 2
-    ##      id unifyr_missing_periods
+    ##      id panelbuild_missing_periods
     ##   <dbl>                  <int>
     ## 1     1                      2
     ## 2     2                      2
@@ -100,7 +100,7 @@ flag_panel_issues(example_panel, id = id, time = year)
 ```
 
     ## # A tibble: 9 × 7
-    ##      id  year outcome treatment unifyr_row_id unifyr_id_time_n
+    ##      id  year outcome treatment panelbuild_row_id panelbuild_id_time_n
     ##   <dbl> <dbl>   <dbl>     <dbl>         <int>            <int>
     ## 1     1  2020      10         0             1                1
     ## 2     1  2021      12         1             2                2
@@ -111,7 +111,7 @@ flag_panel_issues(example_panel, id = id, time = year)
     ## 7     3  2021      31         0             7                1
     ## 8     3  2022      32         1             8                1
     ## 9     3  2023      33         1             9                1
-    ## # ℹ 1 more variable: unifyr_duplicate_cell <lgl>
+    ## # ℹ 1 more variable: panelbuild_duplicate_cell <lgl>
 
 ## Complete the panel grid
 
@@ -129,7 +129,7 @@ complete_panel(example_panel_unique, id = id, time = year)
 ```
 
     ## # A tibble: 12 × 7
-    ##       id  year outcome treatment unifyr_original_row unifyr_completed_cell
+    ##       id  year outcome treatment panelbuild_original_row panelbuild_completed_cell
     ##    <dbl> <dbl>   <dbl>     <dbl> <lgl>               <lgl>                
     ##  1     1  2020      10         0 TRUE                FALSE                
     ##  2     1  2021      12         1 TRUE                FALSE                
@@ -143,7 +143,7 @@ complete_panel(example_panel_unique, id = id, time = year)
     ## 10     3  2021      31         0 TRUE                FALSE                
     ## 11     3  2022      32         1 TRUE                FALSE                
     ## 12     3  2023      33         1 TRUE                FALSE                
-    ## # ℹ 1 more variable: unifyr_audit_action <chr>
+    ## # ℹ 1 more variable: panelbuild_audit_action <chr>
 
 ## Main functions
 
@@ -156,5 +156,5 @@ complete_panel(example_panel_unique, id = id, time = year)
 
 ## Package goal
 
-The goal of `unifyr` is to provide a transparent and reproducible
+The goal of `panelbuild` is to provide a transparent and reproducible
 workflow for panel-data quality assurance before statistical modeling.

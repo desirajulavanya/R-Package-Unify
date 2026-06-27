@@ -2,7 +2,7 @@
 
 `missing_cells()` extracts the missing unit-time combinations stored in
 an audit object created by
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 
 ## Usage
 
@@ -15,7 +15,7 @@ missing_cells(x)
 - x:
 
   An object created by
-  [`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+  [`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 
 ## Value
 
@@ -31,10 +31,10 @@ the missing-cell table already stored in the audit object.
 
 ## See also
 
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md),
-[`panel_gaps()`](https://desirajulavanya.github.io/R-Package-Unify/reference/panel_gaps.md),
-[`gap_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/gap_summary.md),
-[`complete_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/complete_panel.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md),
+[`panel_gaps()`](https://desirajulavanya.github.io/panelbuild/reference/panel_gaps.md),
+[`gap_summary()`](https://desirajulavanya.github.io/panelbuild/reference/gap_summary.md),
+[`complete_panel()`](https://desirajulavanya.github.io/panelbuild/reference/complete_panel.md)
 
 ## Examples
 

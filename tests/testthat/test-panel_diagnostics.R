@@ -42,10 +42,10 @@ test_that("gap_summary reports missing periods by unit", {
   summary <- gap_summary(df, id = district, time = year)
 
   expect_s3_class(summary, "tbl_df")
-  expect_true("unifyr_missing_periods" %in% names(summary))
-  expect_equal(summary$unifyr_missing_periods[summary$district == "B"], 2)
-  expect_equal(summary$unifyr_missing_periods[summary$district == "A"], 1)
-  expect_equal(summary$unifyr_missing_periods[summary$district == "C"], 1)
+  expect_true("panelbuild_missing_periods" %in% names(summary))
+  expect_equal(summary$panelbuild_missing_periods[summary$district == "B"], 2)
+  expect_equal(summary$panelbuild_missing_periods[summary$district == "A"], 1)
+  expect_equal(summary$panelbuild_missing_periods[summary$district == "C"], 1)
 })
 
 
@@ -74,12 +74,12 @@ test_that("duplicate_summary reports duplicate cells by unit", {
   summary <- duplicate_summary(df, id = district, time = year)
 
   expect_s3_class(summary, "tbl_df")
-  expect_true("unifyr_duplicate_cells" %in% names(summary))
-  expect_true("unifyr_duplicate_extra_rows" %in% names(summary))
+  expect_true("panelbuild_duplicate_cells" %in% names(summary))
+  expect_true("panelbuild_duplicate_extra_rows" %in% names(summary))
 
-  expect_equal(summary$unifyr_duplicate_cells[summary$district == "B"], 1)
-  expect_equal(summary$unifyr_duplicate_extra_rows[summary$district == "B"], 1)
+  expect_equal(summary$panelbuild_duplicate_cells[summary$district == "B"], 1)
+  expect_equal(summary$panelbuild_duplicate_extra_rows[summary$district == "B"], 1)
 
-  expect_equal(summary$unifyr_duplicate_cells[summary$district == "C"], 1)
-  expect_equal(summary$unifyr_duplicate_extra_rows[summary$district == "C"], 1)
+  expect_equal(summary$panelbuild_duplicate_cells[summary$district == "C"], 1)
+  expect_equal(summary$panelbuild_duplicate_extra_rows[summary$district == "C"], 1)
 })

@@ -31,7 +31,8 @@ A data frame with 9 rows and 4 variables:
 ## Details
 
 The dataset intentionally includes one duplicate unit-time observation
-and missing unit-time cells so that users can test `unifyr` diagnostics.
+and missing unit-time cells so that users can test `panelbuild`
+diagnostics.
 
 ## Examples
 

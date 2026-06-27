@@ -19,9 +19,9 @@ month, quarter, or date.}
 A tibble containing the original data plus row-level audit columns:
 
 \describe{
-\item{\code{unifyr_row_id}}{Integer row identifier based on the original row order.}
-\item{\code{unifyr_id_time_n}}{Number of rows with the same unit-time combination.}
-\item{\code{unifyr_duplicate_cell}}{Logical indicator for rows that belong to a
+\item{\code{panelbuild_row_id}}{Integer row identifier based on the original row order.}
+\item{\code{panelbuild_id_time_n}}{Number of rows with the same unit-time combination.}
+\item{\code{panelbuild_duplicate_cell}}{Logical indicator for rows that belong to a
 duplicate unit-time cell.}
 }
 

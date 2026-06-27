@@ -2,33 +2,33 @@
 output: github_document
 ---
 
-# unifyr
+# panelbuild
 
-`unifyr` provides tools for auditing, validating, and preparing panel datasets before statistical analysis.
+`panelbuild` provides tools for auditing, validating, and preparing panel datasets before statistical analysis.
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/desirajulavanya/R-Package-Unify/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/desirajulavanya/R-Package-Unify/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/desirajulavanya/panelbuild/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/desirajulavanya/panelbuild/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Installation
 
-You can install the development version of `unifyr` from GitHub:
+You can install the development version of `panelbuild` from GitHub:
 
 ```{r eval=FALSE}
 # install.packages("remotes")
-remotes::install_github("desirajulavanya/R-Package-Unify")
+remotes::install_github("desirajulavanya/panelbuild")
 ```
 
-## Why unifyr?
+## Why panelbuild?
 
 Panel datasets often contain missing unit-time cells, duplicate observations, irregular time gaps, and imbalance. These issues can affect fixed effects models, difference-in-differences designs, event studies, and other panel-data methods.
 
-`unifyr` helps researchers identify and document these problems before estimation.
+`panelbuild` helps researchers identify and document these problems before estimation.
 
 ## Basic example
 
 ```{r}
-library(unifyr)
+library(panelbuild)
 
 data(example_panel)
 
@@ -82,4 +82,4 @@ complete_panel(example_panel_unique, id = id, time = year)
 
 ## Package goal
 
-The goal of `unifyr` is to provide a transparent and reproducible workflow for panel-data quality assurance before statistical modeling.
+The goal of `panelbuild` is to provide a transparent and reproducible workflow for panel-data quality assurance before statistical modeling.

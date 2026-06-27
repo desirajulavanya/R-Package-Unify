@@ -39,10 +39,10 @@ The function does not modify, drop, aggregate, or impute the data.
 
 ## See also
 
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md),
-[`duplicate_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_summary.md),
-[`duplicate_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_cells.md),
-[`flag_panel_issues()`](https://desirajulavanya.github.io/R-Package-Unify/reference/flag_panel_issues.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md),
+[`duplicate_summary()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_summary.md),
+[`duplicate_cells()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_cells.md),
+[`flag_panel_issues()`](https://desirajulavanya.github.io/panelbuild/reference/flag_panel_issues.md)
 
 ## Examples
 

@@ -1,6 +1,6 @@
-# unifyr 0.1.0
+# panelbuild 0.1.0
 
-* Initial development release of `unifyr`.
+* Initial development release of `panelbuild`.
 * Added `audit_panel()` for summarizing panel structure, balance, missing cells, and duplicate unit-time observations.
 * Added `duplicate_summary()` for identifying duplicate unit-time cells.
 * Added `gap_summary()` for summarizing missing time periods by panel unit.

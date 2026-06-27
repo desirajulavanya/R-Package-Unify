@@ -63,7 +63,7 @@ panel_gaps <- function(data, id, time) {
 #'
 #' @return
 #' A tibble with one row per panel unit and a column
-#' `unifyr_missing_periods` giving the number of missing time periods for that
+#' `panelbuild_missing_periods` giving the number of missing time periods for that
 #' unit. If no gaps are present, all units are returned with zero missing
 #' periods.
 #'
@@ -94,12 +94,12 @@ gap_summary <- function(data, id, time) {
 
     return(
       ids |>
-        dplyr::mutate(unifyr_missing_periods = 0L) |>
+        dplyr::mutate(panelbuild_missing_periods = 0L) |>
         dplyr::arrange(!!id_quo)
     )
   }
 
   gaps |>
-    dplyr::count(!!id_quo, name = "unifyr_missing_periods") |>
-    dplyr::arrange(dplyr::desc(.data$unifyr_missing_periods), !!id_quo)
+    dplyr::count(!!id_quo, name = "panelbuild_missing_periods") |>
+    dplyr::arrange(dplyr::desc(.data$panelbuild_missing_periods), !!id_quo)
 }

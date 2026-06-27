@@ -15,7 +15,7 @@ gap_summary(data, id, time)
 }
 \value{
 A tibble with one row per panel unit and a column
-\code{unifyr_missing_periods} giving the number of missing time periods for that
+\code{panelbuild_missing_periods} giving the number of missing time periods for that
 unit. If no gaps are present, all units are returned with zero missing
 periods.
 }

@@ -1,8 +1,8 @@
 ---
-title: "Getting Started with unifyr"
+title: "Getting Started with panelbuild"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with unifyr}
+  %\VignetteIndexEntry{Getting Started with panelbuild}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,21 +16,21 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-`unifyr` provides tools for auditing, validating, and preparing panel datasets before statistical analysis.
+`panelbuild` provides tools for auditing, validating, and preparing panel datasets before statistical analysis.
 
 Panel datasets often contain duplicate unit-time observations, missing time periods, irregular gaps, and imbalance. These issues can affect fixed effects models, difference-in-differences designs, event studies, and other panel-data methods.
 
-The goal of `unifyr` is to help users identify these issues before estimation.
+The goal of `panelbuild` is to help users identify these issues before estimation.
 
 # Load the package
 
 ```{r}
-library(unifyr)
+library(panelbuild)
 ```
 
 # Example panel dataset
 
-`unifyr` includes a small example dataset called `example_panel`.
+`panelbuild` includes a small example dataset called `example_panel`.
 
 ```{r}
 data(example_panel)
@@ -95,10 +95,10 @@ complete_panel(example_panel_unique, id = id, time = year)
 
 # Typical workflow
 
-A typical `unifyr` workflow is:
+A typical `panelbuild` workflow is:
 
 ```{r, eval = FALSE}
-library(unifyr)
+library(panelbuild)
 
 audit_panel(my_data, id = unit_id, time = year)
 
@@ -114,6 +114,6 @@ complete_panel(clean_data, id = unit_id, time = year)
 
 # Summary
 
-`unifyr` is designed to provide a transparent and reproducible workflow for panel-data quality assurance.
+`panelbuild` is designed to provide a transparent and reproducible workflow for panel-data quality assurance.
 
 Use it before fitting panel models, difference-in-differences designs, event studies, or other longitudinal-data analyses.

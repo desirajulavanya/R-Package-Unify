@@ -2,7 +2,7 @@
 
 `duplicate_cells()` extracts duplicate unit-time combinations stored in
 an audit object created by
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 
 ## Usage
 
@@ -15,7 +15,7 @@ duplicate_cells(x)
 - x:
 
   An object created by
-  [`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md).
+  [`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md).
 
 ## Value
 
@@ -33,10 +33,10 @@ the duplicate-cell table already stored in the audit object.
 
 ## See also
 
-[`audit_panel()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_panel.md),
-[`panel_duplicates()`](https://desirajulavanya.github.io/R-Package-Unify/reference/panel_duplicates.md),
-[`duplicate_summary()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_summary.md),
-[`flag_panel_issues()`](https://desirajulavanya.github.io/R-Package-Unify/reference/flag_panel_issues.md)
+[`audit_panel()`](https://desirajulavanya.github.io/panelbuild/reference/audit_panel.md),
+[`panel_duplicates()`](https://desirajulavanya.github.io/panelbuild/reference/panel_duplicates.md),
+[`duplicate_summary()`](https://desirajulavanya.github.io/panelbuild/reference/duplicate_summary.md),
+[`flag_panel_issues()`](https://desirajulavanya.github.io/panelbuild/reference/flag_panel_issues.md)
 
 ## Examples
 
