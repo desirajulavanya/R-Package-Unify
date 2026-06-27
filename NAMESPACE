@@ -2,6 +2,7 @@
 
 S3method(print,unifyr_panel_audit)
 export(audit_panel)
+export(audit_report)
 export(audit_summary)
 export(complete_panel)
 export(duplicate_cells)

@@ -20,6 +20,7 @@ silently impute, aggregate, or drop observations.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://desirajulavanya.github.io/R-Package-Unify/}
   \item \url{https://github.com/desirajulavanya/R-Package-Unify}
   \item Report bugs at \url{https://github.com/desirajulavanya/R-Package-Unify/issues}
 }

@@ -78,7 +78,7 @@ panel_duplicates <- function(data, id, time) {
 #' @examples
 #' duplicate_summary(example_panel, id = id, time = year)
 #'
-#' @export#' Summarize duplicate unit-time cells by panel unit
+#' @export #Summarize duplicate unit-time cells by panel unit
 #'
 #' `duplicate_summary()` reports how many duplicate unit-time cells each panel
 #' unit has.

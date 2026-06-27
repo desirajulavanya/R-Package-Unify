@@ -7,3 +7,4 @@
 * Added `flag_panel_issues()` for row-level panel diagnostics.
 * Added `complete_panel()` for creating complete unit-time grids without imputing observed variables.
 * Added README examples and package documentation.
+* Added `audit_report()` for printing a concise panel audit report with recommended next steps.

@@ -191,6 +191,8 @@ workflow for panel-data quality assurance before statistical modeling.
   : Extract missing unit-time cells from a panel audit
 - [`duplicate_cells()`](https://desirajulavanya.github.io/R-Package-Unify/reference/duplicate_cells.md)
   : Extract duplicate unit-time cells from a panel audit
+- [`audit_report()`](https://desirajulavanya.github.io/R-Package-Unify/reference/audit_report.md)
+  : Create a panel audit report
 
 ## Panel diagnostics
 

@@ -17,8 +17,7 @@ not silently impute, aggregate, or drop observations.
 
 Useful links:
 
-- [URL:
-  https://desirajulavanya.github.io/R-Package-Unify/](URL:%20https://desirajulavanya.github.io/R-Package-Unify/)
+- <https://desirajulavanya.github.io/R-Package-Unify/>
 
 - <https://github.com/desirajulavanya/R-Package-Unify>
 
