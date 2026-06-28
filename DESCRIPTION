@@ -22,5 +22,5 @@ VignetteBuilder: knitr
 URL: https://desirajulavanya.github.io/panelbuild/, https://github.com/desirajulavanya/panelbuild
 BugReports: https://github.com/desirajulavanya/panelbuild/issues
 Depends: 
-    R (>= 4.0)
+    R (>= 4.1.0)
 LazyData: true
